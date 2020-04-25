@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+
+
+    <h1>TO-DO APP </h1>
+<!-- <ul>
+  <li>A item</li>
+  <li>B item</li>
+</ul> -->
+<ul>
+{% for todo_item in all_items %}
+<li>{{todo_item.content}}
+  <form action="/deleteTodo/{{todo_item.id}}/"
+style="display :inline;"
+   method="post">
+  {% csrf_token %}
+  <input type="submit" value="Delete">
+  </form
+
+
+</li>
+{% endfor %}
+</ul>
+
+
+<form action="/addTodo/" method="post">
+{% csrf_token %}
+<input type="text" name="content">
+<input type="submit" value="Add">
+</form>
+
+
+  </div>
+    </div>
+
+
+
+
+  </body>
+</html>
